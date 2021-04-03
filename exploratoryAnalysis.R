@@ -19,11 +19,26 @@ library(randomcoloR) #genera colores random para graficas
 library(readxl)
 library(tidyverse)
 library(ggplot)
+library(haven)
+library(foreign)
 
 path <- "C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data"
+
+Mat2009 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2009.sav")
+Mat2010 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2010.sav")
+Mat2011 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2011.sav")
+Mat2012 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2012.sav")
+Mat2013 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2013.sav")
+Mat2014 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2014.sav")
+Mat2015 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2015.sav")
+Mat2016 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2016.sav")
+Mat2017 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2017.sav")
+Mat2018 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2018.sav")
+Mat2019 <- read_sav("C:/Users/andre/OneDrive/Documents/Mineria de datos/Proyecto/Proyecto-MineriaDeDatos/data/2019.sav")
+
 #2009
-ano_ocurrencia2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Año y departamento ocurrencia")
-grupo_edad2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Grupos de edad novio y novia")
+#ano_ocurrencia2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Año y departamento ocurrencia")
+#grupo_edad2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Grupos de edad novio y novia")
 # grupo_edad2009_df <- as.data.frame (grupo_edad2009)
 # rownames (grupo_edad2009_df) <- grupo_edad2009_df[,1]
 # grupo_edad2009_df <- grupo_edad2009_df
@@ -38,20 +53,20 @@ grupo_edad2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proye
 # mydata.rcorr = rcorr(df_matrix)
 # mydata.rcorr
 
-grupo_etnico2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Grupo étnico del novio y novia")
-ocupacion_novia2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Ocupaciones del novio")
-ocupacion_novio2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Ocupaciones de la novia")
-mes_registro2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Mes registro y departamento")
+#grupo_etnico2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Grupo étnico del novio y novia")
+#ocupacion_novia2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Ocupaciones del novio")
+#ocupacion_novio2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Ocupaciones de la novia")
+#mes_registro2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Mes registro y departamento")
 
 #2010
-ano_ocurrencia2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Año y departamento ocurrencia")
-grupo_edad2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Grupos de edad novio y novia")
-grupo_etnico2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Grupo étnico del novio y novia")
-ocupacion_novia2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Ocupaciones del novio")
-ocupacion_novio2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Ocupaciones de la novia")
-mes_registro2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Mes registro y departamento")
+#ano_ocurrencia2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Año y departamento ocurrencia")
+#grupo_edad2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Grupos de edad novio y novia")
+#grupo_etnico2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Grupo étnico del novio y novia")
+#ocupacion_novia2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Ocupaciones del novio")
+#ocupacion_novio2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Ocupaciones de la novia")
+#mes_registro2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Mes registro y departamento")
 
-rownames(grupo_edad2009) <- grupo_edad2009[,1] #Assigning row names from 1st column 
+#rownames(grupo_edad2009) <- grupo_edad2009[,1] #Assigning row names from 1st column 
 
-grupo_edad2009[,1] <- NULL #Removing the first column
+#grupo_edad2009[,1] <- NULL #Removing the first column
 
