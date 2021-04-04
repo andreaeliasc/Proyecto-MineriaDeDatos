@@ -91,6 +91,19 @@ Mat2009[ , namevector] <- NA
 namevector <- c("DIAOCU")
 Mat2009[ , namevector] <- NA
 
+#agregar ciuo
+namevector <- c("CIUOHOM","CIUOMUJ")
+Mat2009[ , namevector] <- NA
+namevector <- c("CIUOHOM","CIUOMUJ")
+Mat2010[ , namevector] <- NA
+namevector <- c("CIUOHOM","CIUOMUJ")
+Mat2011[ , namevector] <- NA
+namevector <- c("CIUOHOM","CIUOMUJ")
+Mat2012[ , namevector] <- NA
+
+#fix de anio
+Mat2009$AÑOREG<- 2009
+
 #cambiar el valor del grupo etnico, de 2 a 4, para los no indigenas (ver diccionario de variables)
 Mat2009$PUEHOM[Mat2009$PUEHOM == 2] <- 4
 Mat2009$PUEMUJ[Mat2009$PUEMUJ == 2] <- 4
@@ -100,6 +113,25 @@ Mat2011$PUEHOM[Mat2011$PUEHOM == 2] <- 4
 Mat2011$PUEMUJ[Mat2011$PUEMUJ == 2] <- 4
 Mat2012$PUEHOM[Mat2012$PUEHOM == 2] <- 4
 Mat2012$PUEMUJ[Mat2012$PUEMUJ == 2] <- 4
+
+
+Mat2009<-zap_labels(Mat2009)
+Mat2010<-zap_labels(Mat2010)
+Mat2011<-zap_labels(Mat2011)
+Mat2012<-zap_labels(Mat2012)
+Mat2013<-zap_labels(Mat2013)
+Mat2014<-zap_labels(Mat2014)
+Mat2015<-zap_labels(Mat2015)
+Mat2016<-zap_labels(Mat2016)
+Mat2017<-zap_labels(Mat2017)
+Mat2018<-zap_labels(Mat2018)
+Mat2019<-zap_labels(Mat2019)
+
+Matrimonios_General = rbind(Mat2013,Mat2014,Mat2015,Mat2016,Mat2017,Mat2018,Mat2019)
+namevector <- c("OCUHOM","OCUMUJ")
+Matrimonios_General[ , namevector] <- NA
+Matrimonios_General2 = rbind(Mat2009,Mat2010,Mat2011,Mat2012)
+final_dataset = rbind(Matrimonios_General, Matrimonios_General2)
 
 colnames(Mat2009)
 colnames(Mat2010)
@@ -113,34 +145,7 @@ colnames(Mat2017)
 colnames(Mat2018)
 colnames(Mat2019)
 
-#grupo_edad2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Grupos de edad novio y novia")
-# grupo_edad2009_df <- as.data.frame (grupo_edad2009)
-# rownames (grupo_edad2009_df) <- grupo_edad2009_df[,1]
-# grupo_edad2009_df <- grupo_edad2009_df    
-# df_matrix <- data.matrix(grupo_edad2009_df)
-# mosaicplot(df_matrix, main="Health Improvement by Drug Treatment (mosaic plot)")
-# barplot(df_matrix, legend=TRUE, beside=TRUE,
-#         main='grupo edades')
-# install.packages("Hmisc")
-# library("Hmisc")
-# 
-# 
-# mydata.rcorr = rcorr(df_matrix)
-# mydata.rcorr
+colnames(Matrimonios_General)
+colnames(Matrimonios_General2)
+colnames(final_dataset)
 
-#grupo_etnico2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Grupo étnico del novio y novia")
-#ocupacion_novia2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Ocupaciones del novio")
-#ocupacion_novio2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Ocupaciones de la novia")
-#mes_registro2009 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2009.xls", sheet = "Mes registro y departamento")
-
-#2010
-#ano_ocurrencia2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Año y departamento ocurrencia")
-#grupo_edad2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Grupos de edad novio y novia")
-#grupo_etnico2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Grupo étnico del novio y novia")
-#ocupacion_novia2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Ocupaciones del novio")
-#ocupacion_novio2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Ocupaciones de la novia")
-#mes_registro2010 <- read_excel("C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/2010.xls", sheet = "Mes registro y departamento")
-
-#rownames(grupo_edad2009) <- grupo_edad2009[,1] #Assigning row names from 1st column 
-
-#grupo_edad2009[,1] <- NULL #Removing the first column
