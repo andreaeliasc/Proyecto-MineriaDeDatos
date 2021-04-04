@@ -149,3 +149,12 @@ colnames(Matrimonios_General)
 colnames(Matrimonios_General2)
 colnames(final_dataset)
 
+#inciso a
+glimpse(final_dataset)
+
+#inciso b
+library(e1071)
+kurtosis(final_dataset$EDADHOM)
+kurtosis(final_dataset$EDADMUJ)
+hist(final_dataset$EDADHOM, xlim=c(0,100), breaks = "FD")
+hist(final_dataset$EDADMUJ, xlim=c(0,100), breaks = "FD")
