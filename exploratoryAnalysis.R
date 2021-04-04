@@ -158,3 +158,56 @@ kurtosis(final_dataset$EDADHOM)
 kurtosis(final_dataset$EDADMUJ)
 hist(final_dataset$EDADHOM, xlim=c(0,100), breaks = "FD")
 hist(final_dataset$EDADMUJ, xlim=c(0,100), breaks = "FD")
+
+
+#Tablas de Frecuencia para variables categoricas
+freqDep <- table(final_dataset$DEPREG)
+View(freqDep)
+
+freqMun <- table(final_dataset$MUPREG)
+View(freqMun)
+
+freqMesReg <- table(final_dataset$MESREG)
+View(freqMesReg)
+
+freqAñoReg <- table(final_dataset$AÑOREG)
+View(freqAñoReg)
+
+freqClaseUnion <- table(final_dataset$CLAUNI)
+View(freqClaseUnion)
+
+freqPueHom <- table(final_dataset$PUEHOM)
+View(freqPueHom)
+
+freqPueMuj <- table(final_dataset$PUEMUJ)
+View(freqPueMuj)
+
+freqNacHom <- table(final_dataset$NACHOM)
+View(freqNacHom)
+
+freqNacMuj <- table(final_dataset$NACMUJ)
+View(freqNacMuj)
+
+freqOcupCIUO <- table(final_dataset$CIUOHOM)
+View(freqOcupCIUO)
+
+freqOcupCIUOMuj <- table(final_dataset$CIUOMUJ)
+View(freqOcupCIUOMuj)
+
+
+freqMunOcu <- table(final_dataset$MUPOCU)
+View(freqMunOcu)
+
+freqOcupHom <- table(final_dataset$OCUHOM)
+View(freqOcupHom)
+
+freqOcupMuj <- table(final_dataset$OCUMUJ)
+View(freqOcupMuj)
+
+esc_hombre <- data.frame(table(final_dataset$ESCHOM))
+esc_mujer <- data.frame(table(final_dataset$ESCMUJ))
+depocu <- data.frame(table(final_dataset$DEPOCU))
+mupocu <- data.frame(table(final_dataset$MUPOCU))
+dia_ocu <- data.frame(table(final_dataset$DIAOCU))
+mes_ocu <- data.frame(table(final_dataset$MESOCU))
+areag_ocu <- data.frame(table(final_dataset$AREAGOCU))
