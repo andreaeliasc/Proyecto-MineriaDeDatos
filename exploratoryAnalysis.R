@@ -211,3 +211,46 @@ mupocu <- data.frame(table(final_dataset$MUPOCU))
 dia_ocu <- data.frame(table(final_dataset$DIAOCU))
 mes_ocu <- data.frame(table(final_dataset$MESOCU))
 areag_ocu <- data.frame(table(final_dataset$AREAGOCU))
+
+
+#Pregunta 1
+
+barplot(freqDep, col=c("orange","blue", "pink", "lightblue", "purple", "royalblue", "green", "red", "white", "lightpink", "yellow", "brown", "magenta", "cyan", "seagreen", "turquoise", "tan", "maroon", "salmon", "beige", "black", "lightyellow"), las = 1, main = "Matrimonios registrados por departamentos", xlab = "departamento", ylab = "matrimonios registrados", names.arg =c("Guatemala", "El Progreso", "Sacatepequez", "Chimaltenango", "Escuintla", "Santa Rosa", "Solola", "Totonicapan", "Quetzaltenango", "Suchitepequez", "Retalhuleu", "San Marcos", "Huehuetenango", "Quiche", "Baja Verapaz", "Alta Verapaz", "Peten", "Izabal", "Zacapa", "Chiquimula", "Jalapa", "Jutiapa"), las =2)
+
+#Pregunta 2
+barplot(head(edad, 10),  col = distinctColorPalette(99))
+
+
+edadMuj <- sort(edad,                   # Vector atómico
+     decreasing = TRUE, # Ordenar en orden creciente (FALSE) o decrecienete (TRUE)
+     na.last = TRUE,)     
+
+barplot(head(edadMuj, 15),  col = distinctColorPalette(99), main = "Top 15 edad de mujeres", xlab = "edad", ylab="frecuencia")
+
+# Pregunta 3
+edadHom <- table(final_dataset$EDADHOM)
+edadHom <- sort(edadHom,                   # Vector atómico
+                decreasing = TRUE, # Ordenar en orden creciente (FALSE) o decrecienete (TRUE)
+                na.last = TRUE,)   
+View(edadHom)
+barplot(head(edadHom, 15),  col = distinctColorPalette(99), main = "Top 15 edad de hombres", xlab = "edad", ylab="frecuencia")
+
+#Pregunta 4
+
+escolaridadMuj <- table(final_dataset$ESCMUJ)
+View(escolaridadMuj)
+escolaridadMuj <- sort(escolaridadMuj,                   # Vector atómico
+                decreasing = TRUE, # Ordenar en orden creciente (FALSE) o decrecienete (TRUE)
+                na.last = TRUE,)     
+
+View(escolaridadMuj)
+barplot(escolaridadMuj, col = distinctColorPalette(9), main = "Grado de escolaridad mujeres", xlab = "grado escolaridad", ylab = "frecuencia",  names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado") )
+
+#Pregunta #5
+escolaridadHombre <- table(final_dataset$ESCHOM)
+escolaridadHombre <- sort(escolaridadHombre,                   # Vector atómico
+                          decreasing = TRUE, # Ordenar en orden creciente (FALSE) o decrecienete (TRUE)
+                          na.last = TRUE,)  
+
+barplot(escolaridadHombre, col = distinctColorPalette(9), main = "Grado de escolaridad de Hombres", xlab = "grado escolaridad", ylab = "frecuencia",  names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado") )
+
