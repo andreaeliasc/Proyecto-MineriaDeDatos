@@ -219,7 +219,7 @@ barplot(freqDep, col=c("orange","blue", "pink", "lightblue", "purple", "royalblu
 
 #Pregunta 2
 edadMuj<- table(final_dataset$EDADMUJ)
-edadMuj <- sort(edad,                   # Vector atómico
+edadMuj <- sort(edadMuj,                   # Vector atómico
      decreasing = TRUE, # Ordenar en orden creciente (FALSE) o decrecienete (TRUE)
      na.last = TRUE,)     
 
