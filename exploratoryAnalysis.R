@@ -401,3 +401,24 @@ ladinaEscHom <- filter(escolaridadPuebloHom, escolaridadPuebloHom$PUEHOM == 4)
 ladinaEscHom <- table(ladinaEscHom$ESCHOM)
 View(ladinaEscHom)
 barplot(ladinaEscHom, main = "Escolaridad en hombres mestizos y ladinos", xlab = "Escolaridad", ylab = "Numero de Mujeres", col = distinctColorPalette(1000), names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado")  )
+
+#Clustering 
+clusteringVar <- final_dataset[c("EDADMUJ", "EDADHOM")]
+clusteringVar <- final_dataset[c("EDADMUJ", "EDADHOM")]
+clusteringVar <- filter(clusteringVar, clusteringVar$EDADMUJ <115, clusteringVar$EDADHOM<115)
+wss <- (nrow(clusteringVar)-1)*sum(apply(clusteringVar,2,var))
+ for (i in 2:10) 
+   wss[i] <- sum(kmeans(clusteringVar, centers=i)$withinss)
+ plot(1:10, wss, type="b", xlab="Number of Clusters",  ylab="Within groups sum of squares")
+ 
+ matrifinal <- filter(final_dataset, final_dataset$EDADHOM < 115, final_dataset$EDADMUJ<115)
+ km <- kmeans(clusteringVar, 3)
+ matrifinal$grupo<- km$cluster 
+ matrifinal$KM<-km$cluster 
+
+plotcluster(clusteringVar[,1:2],km$cluster)
+silkm <- silhouette(km$cluster, dist(clusteringVar[,1:2]))
+
+fviz_cluster(km, data = clusteringVar[,1:2],geom = "point", ellipse.type = "norm")
+
+fviz_cluster(km, data = clusteringVar)
