@@ -252,3 +252,152 @@ escolaridadHombre <- sort(escolaridadHombre,                   # Vector atómico
 
 barplot(escolaridadHombre, col = distinctColorPalette(9), main = "Grado de escolaridad de Hombres", xlab = "grado escolaridad", ylab = "frecuencia",  names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado") )
 
+#Pregunta #6
+puebloMujer <- table(final_dataset$PUEMUJ)
+View(puebloMujer)
+barplot(puebloMujer, col = distinctColorPalette(6), main = "Pueblo de Origen de la Mujer", xlab = "Pueblo de Origen", ylab = "frecuencia",  names.arg =c("Maya", "Garifuna", "Xinca", "Mestizo/Ladino", "Otro", "Ignorado") )
+
+#Pregunta 7
+puebloHombre <- table(final_dataset$PUEHOM)
+View(puebloHombre)
+barplot(puebloHombre, col = distinctColorPalette(6), main = "Pueblo de Origen del Hombre", xlab = "Pueblo de Origen", ylab = "frecuencia",  names.arg =c("Maya", "Garifuna", "Xinca", "Mestizo/Ladino", "Otro", "Ignorado") )
+
+#Pregunta 8
+
+edadyAñoMujer <- final_dataset[c("EDADMUJ", "AÑOREG")]
+hola <- filter(edadyAñoMujer, edadyAñoMujer$EDADMUJ < 18)
+View(hola)
+barplot(hola)
+
+incurrenciaMenoresEdad <- table(hola$AÑOREG)
+View(incurrenciaMenoresEdad)
+barplot(incurrenciaMenoresEdad, main = "Matrimonios de menores de edad por año", xlab = "Año de Registro", ylab = "Numero de Matrimonios", col = distinctColorPalette(8))
+
+pie(incurrenciaMenoresEdad, main = "Matrimonios de menores de edad por año", col = distinctColorPalette(8))
+
+
+#Pregunta 9
+edadyAñoHombre <- final_dataset[c("EDADHOM", "AÑOREG")]
+homb <- filter(edadyAñoHombre, edadyAñoHombre$EDADHOM < 18)
+View(homb)
+
+
+incurrenciaMenoresEdadHom <- table(homb$AÑOREG)
+View(incurrenciaMenoresEdadHom)
+barplot(incurrenciaMenoresEdadHom, main = "Matrimonios de menores de edad por año", xlab = "Año de Registro", ylab = "Numero de Matrimonios", col = distinctColorPalette(8))
+
+pie(incurrenciaMenoresEdadHom, main = "Matrimonios de menores de edad por año", col = distinctColorPalette(8))
+
+
+
+#Pregunta 10
+depEdad <- final_dataset[c("EDADHOM", "EDADMUJ", "DEPREG")]
+depEdad2 <- filter(depEdad, depEdad$EDADMUJ < 18, depEdad$EDADHOM < 18)
+incurrenciEdad <- table(depEdad2$DEPREG)
+View(incurrenciEdad)
+barplot(incurrenciEdad, main = "Matrimonios de 2 menores de edad por departamento", xlab = "Departamento de Registro", ylab = "Numero de Matrimonios", col = distinctColorPalette(12) )
+pie(incurrenciEdad, main = "Matrimonios de 2 menores de edad por departamento", col = distinctColorPalette(12))
+
+
+#Pregunta 11
+depEdad3 <- filter(depEdad, depEdad$EDADMUJ < 18, depEdad$EDADHOM>17)
+incurrencia1 <- table(depEdad3$DEPREG)
+View(incurrencia1)
+barplot(incurrencia1, main = "Matrimonios de mujer menor de edad y hombre mayor de edad por departamento", xlab = "Departamento de Registro", ylab = "Numero de Matrimonios", col = distinctColorPalette(22) )
+pie(incurrencia1, main = "Matrimonios de mujer menor de edad y hombre mayor de edad por departamento", col = distinctColorPalette(22))
+
+#Pregunta 12
+depEdad4 <- filter(depEdad, depEdad$EDADMUJ > 17, depEdad$EDADHOM<18)
+incurrencia2 <- table(depEdad4$DEPREG)
+View(incurrencia2)
+barplot(incurrencia2, main = "Matrimonios de mujer mayor de edad y hombre menor de edad por departamento", xlab = "Departamento de Registro", ylab = "Numero de Matrimonios", col = distinctColorPalette(22) )
+pie(incurrencia2, main = "Matrimonios de mujer mayor de edad y hombre menor de edad por departamento", col = distinctColorPalette(22))
+
+
+#Pregunta 13
+edadPueblo <- final_dataset[c("EDADHOM", "PUEHOM")]
+incurrencua3 <- table(edadPueblo$PUEHOM)
+View(incurrencia3)
+edadPueblo <- filter(edadPueblo, edadPueblo$EDADHOM<999)
+plot(x = edadPueblo$PUEHOM, y = edadPueblo$EDADHOM)
+
+barplot(x = edadPueblo$PUEHOM, y = edadPueblo$EDADHOM)
+
+barplot(x = edadPueblo$PUEHOM, y = edadPueblo$EDADHOM, )
+
+
+#Pregunta 14
+edadPueblo <- final_dataset[c("EDADHOM", "PUEHOM")]
+incurrencua3 <- table(edadPueblo$PUEHOM)
+View(incurrencia3)
+edadPueblo <- filter(edadPueblo, edadPueblo$EDADHOM<999)
+plot(x = edadPueblo$PUEHOM, y = edadPueblo$EDADHOM)
+
+barplot(x = edadPueblo$PUEHOM, y = edadPueblo$EDADHOM)
+
+barplot(x = edadPueblo$PUEHOM, y = edadPueblo$EDADHOM, )
+
+
+#pregunta 15
+ocupMayas <- final_dataset[c("OCUHOM", "PUEHOM")]
+#1 maya
+#4 mestizo
+mayas <- filter(ocupMayas, ocupMayas$PUEHOM < 2, !is.na(ocupMayas) )
+incuMayas <- table(mayas$OCUHOM)
+incuMayas <- (head(incuMayas, 25))
+barplot(mayas$OCUHOM)
+
+barplot(incuMayas, main = "Ocupaciones mas comunes en hombres mayas", xlab = "Ocupacion", ylab = "Numero de Hombre", col = distinctColorPalette(1000) )
+
+
+ladinos <- filter(ocupMayas, ocupMayas$PUEHOM == 4, !is.na(ocupMayas) )
+inculadinos <- table(ladinos$OCUHOM)
+inculadinos <- (head(inculadinos, 25))
+barplot(mayas$OCUHOM)
+
+barplot(inculadinos, main = "Ocupaciones mas comunes en hombres mestizos y ladinos", xlab = "Ocupacion", ylab = "Numero de Hombre", col = distinctColorPalette(1000) )
+
+#pregunta 16
+ocupMayasMuj <- final_dataset[c("OCUMUJ", "PUEMUJ")]
+#1 maya
+#4 mestizo
+mayasMuj <- filter(ocupMayasMuj, ocupMayasMuj$PUEMUJ < 2, !is.na(ocupMayasMuj) )
+incuMayasMuj <- table(mayasMuj$OCUMUJ)
+incuMayasMuj <- (head(incuMayasMuj, 25))
+
+
+barplot(incuMayasMuj, main = "Ocupaciones mas comunes en mujeres mayas", xlab = "Ocupacion", ylab = "Numero de Mujeres", col = distinctColorPalette(1000) )
+
+
+ladinosMuj <- filter(ocupMayasMuj, ocupMayasMuj$PUEMUJ == 4, !is.na(ocupMayasMuj) )
+inculadinosMuj <- table(ladinosMuj$OCUMUJ)
+inculadinosMuj <- (head(inculadinosMuj, 25))
+barplot(mayasMuj$OCUMUJ)
+
+barplot(inculadinosMuj, main = "Ocupaciones mas comunes en mujeres mestizas y ladinas", xlab = "Ocupacion", ylab = "Numero de Mujeres", col = distinctColorPalette(1000) )
+
+#escolaridad por pueblo
+
+escolaridadPueblo <- final_dataset[c("ESCMUJ", "PUEMUJ")]
+MayasEsc <- filter(escolaridadPueblo, escolaridadPueblo$PUEMUJ == 1)
+MayasEsc <- table(MayasEsc$ESCMUJ)
+view(MayasEsc)
+barplot(MayasEsc, main = "Escolaridad en mujeres mayas", xlab = "Escolaridad", ylab = "Numero de Mujeres", col = distinctColorPalette(1000), names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado")  )
+
+escolaridadPueblo2 <- final_dataset[c("ESCMUJ", "PUEMUJ")]
+ladinaEsc <- filter(escolaridadPueblo2, escolaridadPueblo2$PUEMUJ == 4)
+ladinaEsc <- table(ladinaEsc$ESCMUJ)
+View(ladinaEsc)
+barplot(ladinaEsc, main = "Escolaridad en mujeres mestizas y ladinas", xlab = "Escolaridad", ylab = "Numero de Mujeres", col = distinctColorPalette(1000), names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado")  )
+#escolaridad pueblo hombre
+escolaridadPuebloHom <- final_dataset[c("ESCHOM", "PUEHOM")]
+MayasEscHom <- filter(escolaridadPuebloHom, escolaridadPuebloHom$PUEHOM == 1)
+MayasEscHom <- table(MayasEscHom$ESCHOM)
+view(MayasEscHom)
+barplot(MayasEscHom, main = "Escolaridad en hombres mayas", xlab = "Escolaridad", ylab = "Numero de Mujeres", col = distinctColorPalette(1000), names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado")  )
+
+
+ladinaEscHom <- filter(escolaridadPuebloHom, escolaridadPuebloHom$PUEHOM == 4)
+ladinaEscHom <- table(ladinaEscHom$ESCHOM)
+View(ladinaEscHom)
+barplot(ladinaEscHom, main = "Escolaridad en hombres mestizos y ladinos", xlab = "Escolaridad", ylab = "Numero de Mujeres", col = distinctColorPalette(1000), names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado")  )
