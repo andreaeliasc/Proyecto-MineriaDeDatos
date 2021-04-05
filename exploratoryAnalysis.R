@@ -218,9 +218,7 @@ areag_ocu <- data.frame(table(final_dataset$AREAGOCU))
 barplot(freqDep, col=c("orange","blue", "pink", "lightblue", "purple", "royalblue", "green", "red", "white", "lightpink", "yellow", "brown", "magenta", "cyan", "seagreen", "turquoise", "tan", "maroon", "salmon", "beige", "black", "lightyellow"), las = 1, main = "Matrimonios registrados por departamentos", xlab = "departamento", ylab = "matrimonios registrados", names.arg =c("Guatemala", "El Progreso", "Sacatepequez", "Chimaltenango", "Escuintla", "Santa Rosa", "Solola", "Totonicapan", "Quetzaltenango", "Suchitepequez", "Retalhuleu", "San Marcos", "Huehuetenango", "Quiche", "Baja Verapaz", "Alta Verapaz", "Peten", "Izabal", "Zacapa", "Chiquimula", "Jalapa", "Jutiapa"), las =2)
 
 #Pregunta 2
-barplot(head(edad, 10),  col = distinctColorPalette(99))
-
-
+edadMuj<- table(final_dataset$EDADMUJ)
 edadMuj <- sort(edad,                   # Vector atómico
      decreasing = TRUE, # Ordenar en orden creciente (FALSE) o decrecienete (TRUE)
      na.last = TRUE,)     
