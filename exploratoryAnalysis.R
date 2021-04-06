@@ -402,6 +402,75 @@ ladinaEscHom <- table(ladinaEscHom$ESCHOM)
 View(ladinaEscHom)
 barplot(ladinaEscHom, main = "Escolaridad en hombres mestizos y ladinos", xlab = "Escolaridad", ylab = "Numero de Mujeres", col = distinctColorPalette(1000), names.arg =c("Ninguno", "Primaria", "Basico", "Diversificado", "Universitario", "Postgrado", "Ignorado")  )
 
+
+
+#Clases de Union por deppto
+clasUniDpto <- final_dataset[c("CLAUNI", "DEPOCU")]
+freqUni <- table(clasUniDpto$DEPOCU)
+View(clasUniDpto)
+
+Union1 <- filter(clasUniDpto, clasUniDpto$CLAUNI == 1 )
+View(Union1)
+freqUni1 <- table(Union1$DEPOCU)
+View(freqUni1)
+barplot(freqUni1, main = "Union de Comunidad absoluta por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+Union2 <- filter(clasUniDpto, clasUniDpto$CLAUNI == 2 )
+View(Union2)
+freqUni2 <- table(Union2$DEPOCU)
+View(freqUni2)
+barplot(freqUni2, main = "Union de separacion absoluta por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+Union3 <- filter(clasUniDpto, clasUniDpto$CLAUNI == 3 )
+View(Union3)
+freqUni3 <- table(Union3$DEPOCU)
+View(freqUni3)
+barplot(freqUni3, main = "Union de comunidad de gananciales  por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+Union4 <- filter(clasUniDpto, clasUniDpto$CLAUNI == 9 )
+View(Union4)
+freqUni4 <- table(Union4$DEPOCU)
+View(freqUni4)
+barplot(freqUni4, main = "Union no especificada  por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+
+# matrimonios de extranjeros por departamento
+matrimExtran <- final_dataset[c("NACHOM", "DEPOCU")]
+matrimExtran <- filter(matrimExtran, matrimExtran$NACHOM != 320)
+View(matrimExtran)
+freqExtran<- table(matrimExtran$DEPOCU)
+View(freqExtran)
+barplot(freqExtran, main = "Matrimonios donde el hombre es  extranjero por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+matrimExtran <- final_dataset[c("NACMUJ", "DEPOCU")]
+matrimExtran <- filter(matrimExtran, matrimExtran$NACMMUJ != 320)
+View(matrimExtran)
+freqExtran<- table(matrimExtran$DEPOCU)
+View(freqExtran)
+barplot(freqExtran, main = "Matrimonios donde la mujer es extranjera  por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+matrimExtran <- final_dataset[c("NACMUJ","NACHOM", "DEPOCU")]
+matrimExtran <- filter(matrimExtran, matrimExtran$NACMMUJ != 320, matrimExtran$NACHOM != 320)
+View(matrimExtran)
+freqExtran<- table(matrimExtran$DEPOCU)
+View(freqExtran)
+barplot(freqExtran, main = "Matrimonios donde ambos son extranjeros es extranjera  por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+
+
+
+#grado escolaridad por departamento 
+escolaridadDepto <- final_dataset[c("ESCMUJ", "ESCHOM", "DEPOCU")]
+freqEsc <- filter(escolaridadDepto, escolaridadDepto$ESCMUJ == 1, escolaridadDepto$ESCHOM == 1 )
+freqEsc<- table(escolaridadDepto$DEPOCU)
+View(freqEsc)
+barplot(freqEsc, main = "Matrimonios donde ambos  no poseen grado de escolaridad  por departamento", xlab = "Departamento", ylab = "Numero de Uniones", col = distinctColorPalette(1000))
+
+
+
+
+
+
 #Clustering 
 clusteringVar <- final_dataset[c("EDADMUJ", "EDADHOM")]
 clusteringVar <- final_dataset[c("EDADMUJ", "EDADHOM")]
