@@ -10,8 +10,8 @@ library(e1071)#para cmeans
 library(cluster)#Para calcular la silueta
 library(mclust) #mixtures of gaussians
 library(fpc)#para hacer el plotcluster
-library(NbClust)#Para determinar el número de clusters óptimo
-library(factoextra)#Para hacer gráficos bonitos de clustering
+library(NbClust)#Para determinar el nÃºmero de clusters Ã³ptimo
+library(factoextra)#Para hacer grÃ¡ficos bonitos de clustering
 library(e1071)
 library(caret)
 library(corrplot) 
@@ -21,11 +21,20 @@ library(tidyverse)
 library(ggplot)
 library(haven)
 library(foreign)
+path_andrea <- "C:/Users/andre/OneDrive/Desktop/Proyecto-MineriaDeDatos/finaldataset.csv"
 
 path_diego <- "C:/Users/Diego/Documents/Universidad/Mineria/Proyecto-MineriaDeDatos/data/finaldataset.csv"
 data <-read.csv(path_diego)
 
-#Separaci�n aleatoria, ratio 70:30
+#Limpieza de datos
+matrifinal <- filter(data, data$EDADHOM < 115, data$EDADMUJ<115)
+view(matrifinal)
+
+dataFinal <- matrifinal[,c("EDADHOM","EDADMUJ","DEPREG","MUPREG","PUEHOM","MESREG","AÑOREG","CLAUNI","PUEHOM","PUEMUJ", "NACHOM", "NACMUJ","ESCHOM","ESCMUJ","CIUOHOM", "CIUOMUJ","DIAOCU","AREAGOCU")]
+
+
+
+#Separación aleatoria, ratio 70:30
 dt = sort(sample(nrow(data), nrow(data)*.7))
 train<-data[dt,]
 test<-data[-dt,]
