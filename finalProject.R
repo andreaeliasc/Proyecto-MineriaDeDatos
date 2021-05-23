@@ -30,7 +30,7 @@ data <-read.csv(path_diego)
 matrifinal <- filter(data, data$EDADHOM < 115, data$EDADMUJ<115)
 view(matrifinal)
 
-dataFinal <- matrifinal[,c("EDADHOM","EDADMUJ","DEPREG","MUPREG","PUEHOM","MESREG","AÑOREG","CLAUNI","PUEHOM","PUEMUJ", "NACHOM", "NACMUJ","ESCHOM","ESCMUJ","CIUOHOM", "CIUOMUJ","DIAOCU","AREAGOCU")]
+dataFinal <- matrifinal[,c("EDADHOM","EDADMUJ","DEPREG","MUPREG","PUEMUJ","MESREG","AÑOREG","PUEHOM","ESCHOM","ESCMUJ","CIUOHOM", "CIUOMUJ","DIAOCU")]
 
 
 
