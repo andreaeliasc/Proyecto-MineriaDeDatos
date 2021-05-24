@@ -37,6 +37,11 @@ dataFinal$edad_dif = abs(dataFinal$EDADHOM - dataFinal$EDADMUJ)
 #Promedio de diferencia de edad entre novio y novia
 mean(dataFinal$edad_dif)
 
+#Variable diatomica segun rangos de edad
+dataFinal$grupo <- ifelse(dataFinal$edad_dif<10, "1", 
+                          ifelse(dataFinal$edad_dif<20, "2", 
+                                ifelse(dataFinal$edad_dif>9, "2", 
+                                      ifelse(dataFinal$edad_dif>20, "3", NA))))
 
 
 #Separación aleatoria, ratio 70:30
