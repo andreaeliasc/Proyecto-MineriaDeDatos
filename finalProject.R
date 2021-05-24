@@ -37,14 +37,18 @@ dataFinal$edad_dif = abs(dataFinal$EDADHOM - dataFinal$EDADMUJ)
 #Promedio de diferencia de edad entre novio y novia
 mean(dataFinal$edad_dif)
 
-#Variable diatomica segun rangos de edad
+#Etiqueta
 dataFinal$grupo <- ifelse(dataFinal$edad_dif<10, "1", 
-                          ifelse(dataFinal$edad_dif<20, "2", 
-                                ifelse(dataFinal$edad_dif>9, "2", 
-                                      ifelse(dataFinal$edad_dif>20, "3", NA))))
+                          ifelse(dataFinal$edad_dif<20, "2",
+                                        ifelse(dataFinal$edad_dif<90, "3", NA)))
+
+# Se cambia la variable grupo a tipo factor
+dataFinal$grupo <- as.factor(dataFinal$grupo)
 
 
 #Separación aleatoria, ratio 70:30
-dt = sort(sample(nrow(data), nrow(data)*.7))
-train<-data[dt,]
-test<-data[-dt,]
+dt = sort(sample(nrow(dataFinal), nrow(dataFinal)*.7))
+train<-dataFinal[dt,]
+test<-dataFinal[-dt,]
+
+head(train, 10)
