@@ -52,3 +52,21 @@ train<-dataFinal[dt,]
 test<-dataFinal[-dt,]
 
 head(train, 10)
+
+#-------------------------------------------------
+# MODELO REDES NEURONALES
+#-------------------------------------------------
+
+nnet_test <- select(test, PUEMUJ,PUEHOM,ESCHOM,ESCMUJ,CIUOHOM, CIUOMUJ,DIAOCU,edad_dif,grupo )
+nnet_t <- select(train, PUEMUJ,PUEHOM,ESCHOM,ESCMUJ,CIUOHOM, CIUOMUJ,DIAOCU,edad_dif,grupo)
+nnet_t$grupo <- factor(nnet_t$grupo)
+nnet_t <- SMOTE(grupo~.,nnet_t,perc.over = 100, perc.under = 500, k=5) # balanceo del dataset  
+
+m_nnet <- nnet(grupo~.,data = nnet_t, size=5, rang=0.00001,
+               decay=5e-2, maxit=400) # generaci?n de modelo RNA
+prediccion_nnet <- as.data.frame(predict(m_nnet, newdata = nnet_test[,1:9]))
+columnaMasAlta<-apply(prediccion_nnet, 1, function(x) colnames(prediccion_nnet)[which.max(x)])
+nnet_test$grupo_nnet<-columnaMasAlta #Se le a?ade al grupo de prueba el valor de la predicci?n
+
+cfm_nnet <- confusionMatrix(table((factor(nnet_test$grupo, levels=min(nnet_test$grupo):max(nnet_test$grupo))),
+                                  (factor(nnet_test$grupo_nnet, levels=min(nnet_test$grupo):max(nnet_test$grupo)))))
