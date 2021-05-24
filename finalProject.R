@@ -32,6 +32,11 @@ view(matrifinal)
 
 dataFinal <- matrifinal[,c("EDADHOM","EDADMUJ","DEPREG","MUPREG","PUEMUJ","MESREG","AÑOREG","PUEHOM","ESCHOM","ESCMUJ","CIUOHOM", "CIUOMUJ","DIAOCU")]
 
+#Agregamos columna con diferencia de edades, se aplica valor absoluto para evitar valores negativos
+dataFinal$edad_dif = abs(dataFinal$EDADHOM - dataFinal$EDADMUJ)
+#Promedio de diferencia de edad entre novio y novia
+mean(dataFinal$edad_dif)
+
 
 
 #Separación aleatoria, ratio 70:30
