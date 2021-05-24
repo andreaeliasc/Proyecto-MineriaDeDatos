@@ -33,6 +33,38 @@ view(matrifinal)
 dataFinal <- matrifinal[,c("EDADHOM","EDADMUJ","DEPREG","MUPREG","PUEMUJ","MESREG","AÑOREG","PUEHOM","ESCHOM","ESCMUJ","CIUOHOM", "CIUOMUJ","DIAOCU")]
 
 #Agregamos columna con diferencia de edades, se aplica valor absoluto para evitar valores negativos
+
+
+#SVM
+
+train$grupo <- as.factor(train$grupo)
+test$grupo <- as.factor(test$grupo)
+
+#Modelo Lineal
+modeloSVM_L<-svm(grupo~., data=train, cost=c(0.001,0.01,0.1, 1,5,10,32,100), kernel="linear")
+summary(modeloSVM_L)
+prediccionL<-predict(modeloSVM_L,newdata=test[,1:13], type="class")
+confusionMatrix(test$grupo,prediccionL)
+
+#Modelo Polinomial 
+modeloSVM_P<-svm(grupo~., data=train, degree=c(3,4,5), coef0=c(0.1,0.5,1,2,3,4), kernel="polynomial")
+prediccionL<-predict(modeloSVM_P,newdata=test[,1:14], type="class")
+confusionMatrix(test$grupo,prediccionL)
+
+#Modelo Radial
+modeloSVM_R<-svm(grupo~., data=train, gamma=c(0.1,0.5,1,2,3,4), kernel="radial")
+prediccionL<-predict(modeloSVM_R,newdata=test[,1:14], type="class")
+confusionMatrix(test$grupo,prediccionL)
+
+#Modelo Sigmoidal
+modeloTuneado<-svm(grupo~., data=train, gamma=c(0.1,0.5,1,2,3,4), coef0=c(0.1,0.5,1,2,3,4), kernel="sigmoid")
+prediccionL<-predict(modeloTuneado,newdata=test[,1:14], type="class")
+confusionMatrix(test$grupo,prediccionL)
+
+#Modelo Polinomial 
+modelo<-tune.svm(grupo~., data=train, degree=c(3,4,5), coef0=c(0.1,0.5,1,2,3,4), kernel="polynomial")
+predMejorModelo<-predict(modelo$best.model,newdata = test[,1:14], type="class")
+confusionMatrix(factor(test$grupo),factor(predMejorModelo))
 dataFinal$edad_dif = abs(dataFinal$EDADHOM - dataFinal$EDADMUJ)
 #Promedio de diferencia de edad entre novio y novia
 mean(dataFinal$edad_dif)
